@@ -1,0 +1,304 @@
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  padding: var(--space-2xl) 0;
+  border-bottom: 1px solid var(--border-grid);
+  overflow: hidden;
+}
+
+/* Spacing layout */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--border-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-grid) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  text-transform: uppercase;
+}
+
+.titleAccent {
+  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  max-width: 45ch;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Matte-finish 3D geometric shape visual (Pure SVG/CSS shading) */
+.visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform 0.6s var(--ease-smooth);
+}
+
+.visual:hover {
+  transform: scale(1.04);
+}
+
+.matteObject {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.65));
+  transition: filter 0.6s var(--ease-smooth);
+}
+
+.visual:hover .matteObject {
+  filter: drop-shadow(0 24px 48px rgba(255,255,255,0.06)) drop-shadow(0 12px 24px rgba(0,0,0,0.8));
+}
+
+/* Depth ring spin on hover */
+.depthRing {
+  transform-origin: 160px 160px;
+  transition: transform 1.2s var(--ease-smooth), opacity 0.6s;
+}
+
+.visual:hover .depthRing {
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+
+/* Trust section */
+.trust {
+  padding: var(--space-lg) 0;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.trustLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.trustLogos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.logoItem {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.logoItem:hover {
+  color: var(--text-primary);
+}
+
+/* Capabilities section */
+.capabilities {
+  padding: var(--space-4xl) 0;
+  border-bottom: 1px solid var(--border-grid);
+}
+
+.capHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-start;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-3xl);
+  border-bottom: 1px solid var(--border-grid);
+  padding-bottom: var(--space-xl);
+}
+
+.capTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.capTitleAccent {
+  color: var(--accent);
+}
+
+.capDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.capGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.capCard {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardNum {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.cardText {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  flex: 1;
+}
+
+.cardLink {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  transition: gap 0.25s var(--ease-smooth);
+}
+
+.cardLink:hover {
+  gap: 0.75rem;
+}
+
+/* Call to Action */
+.cta {
+  padding: var(--space-4xl) 0;
+  background: var(--bg-deep);
+}
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: var(--space-2xl);
+  border-top: 1px solid var(--border-grid);
+  padding-top: var(--space-2xl);
+}
+
+.ctaTextSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.ctaDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 48ch;
+}
+
+.ctaActionSection {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .capGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid, .capHeader, .ctaGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  .capGrid {
+    grid-template-columns: 1fr;
+  }
+  .ctaActionSection {
+    justify-content: flex-start;
+  }
+  .trustLogos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+}

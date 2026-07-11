@@ -1,0 +1,142 @@
+.section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+.intro {
+  border-bottom: 1px solid var(--border-grid);
+  padding-bottom: var(--space-2xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin-top: var(--space-md);
+}
+
+.description {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 50ch;
+  margin-top: var(--space-md);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4xl);
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  border-top: 1px solid var(--border-grid);
+  padding-top: var(--space-2xl);
+}
+
+.serviceRowReverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.textSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.rowText {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.specBadge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-grid);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.visualSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Matte-finish geometric diagrams in services instead of glowing flows */
+.matteDiagram {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+/* CAD Exploded hover transitions */
+.matteDiagram path,
+.matteDiagram ellipse,
+.matteDiagram circle {
+  transition: transform 0.6s var(--ease-smooth), stroke-width 0.4s, opacity 0.4s;
+}
+
+/* Exploded Cube Assembly */
+.serviceRow:hover .cubeTop {
+  transform: translateY(-20px) translateX(10px);
+}
+.serviceRow:hover .cubeLeft {
+  transform: translateY(10px) translateX(-15px);
+}
+.serviceRow:hover .cubeRight {
+  transform: translateY(15px) translateX(15px);
+}
+
+/* Exploded Sphere Assembly */
+.serviceRow:hover .sphereCore {
+  transform: translateY(-15px) scale(1.05);
+}
+.serviceRow:hover .sphereRing {
+  transform: rotate(35deg) scale(1.08);
+}
+
+/* Exploded Cylinder Assembly */
+.serviceRow:hover .cylinderTop {
+  transform: translateY(-25px) translateX(20px);
+}
+.serviceRow:hover .cylinderBody {
+  transform: translateY(5px);
+}
+
+@media (max-width: 768px) {
+  .serviceRow, .serviceRowReverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}

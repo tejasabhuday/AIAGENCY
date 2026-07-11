@@ -1,0 +1,26 @@
+'use client';
+import { useState, useEffect, useRef, RefObject } from 'react';
+
+export function useIntersectionObserver(
+  options: IntersectionObserverInit = { threshold: 0.12, rootMargin: '0px 0px -60px 0px' },
+): [RefObject<HTMLElement | null>, boolean] {
+  const ref = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(el);
+      }
+    }, options);
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [options]);
+
+  return [ref, isVisible];
+}
