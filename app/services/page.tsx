@@ -4,7 +4,7 @@ import styles from './page.module.css';
 
 export const metadata: Metadata = {
   title: 'Services',
-  description: 'Custom AI agent orchestration, deterministic transaction workflows, and structured RAG databases.',
+  description: 'Specialized AI architecture and production services — from rapid workflow automations to custom multi-agent deployments.',
 };
 
 // Matte 3D Cube diagram using clean SVG styling with Platinum accent
@@ -73,6 +73,27 @@ const MatteCylinderDiagram = () => (
   </div>
 );
 
+// Matte diamond/prism diagram for 4th service
+const MattePrismDiagram = () => (
+  <div className={styles.visualSide}>
+    <svg className={styles.matteDiagram} width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="160" cy="185" rx="65" ry="12" fill="#000000" fillOpacity="0.4" />
+      {/* Diamond shape */}
+      <path d="M160 30 L220 105 L160 180 L100 105 Z" fill="url(#prismFill)" stroke="#E5E7EB" strokeWidth="1.2" />
+      <path d="M160 30 L220 105" stroke="var(--border-card)" strokeWidth="1.5" />
+      <path d="M160 30 L100 105" stroke="var(--border-card)" strokeWidth="1.5" />
+      <path d="M160 105 L160 30" stroke="rgba(229,231,235,0.2)" strokeWidth="1" strokeDasharray="3 3" />
+      <defs>
+        <linearGradient id="prismFill" x1="100" y1="30" x2="220" y2="180" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#252528" />
+          <stop offset="0.5" stopColor="#141416" />
+          <stop offset="1" stopColor="#08080A" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+);
+
 export default function ServicesPage() {
   return (
     <section className={styles.section} aria-labelledby="services-heading">
@@ -81,64 +102,93 @@ export default function ServicesPage() {
         {/* Intro Header */}
         <div className={styles.intro}>
           <span className="mono-label">[ CATALOGUE : CAPABILITIES ]</span>
-          <h1 className={styles.title} id="services-heading">System Engineering</h1>
+          <h1 className={styles.title} id="services-heading">Specialized AI Architecture &amp; Production Services</h1>
           <p className={styles.description}>
-            We engineer bespoke, secure, and reliable AI systems tailored specifically for your proprietary workflows and business goals.
+            From rapid workflow automations to custom multi-agent product studios, we price and deliver based on operational value and hours saved—not billable hours.
           </p>
         </div>
 
         {/* Alternate Row Lists */}
         <div className={styles.grid}>
           
-          {/* Row 1: AI Agents */}
+          {/* Row 1: AI Workflow Automation */}
           <div className={styles.serviceRow} id="agents">
             <div className={styles.textSide}>
-              <span className="mono-label mono-label-muted">[ CLASSIFICATION: AUTONOMOUS AGENTS ]</span>
-              <h2 className={styles.rowTitle}>Autonomous Agent Systems</h2>
+              <span className="mono-label mono-label-muted">[ SERVICE 01 : WORKFLOW AUTOMATION ]</span>
+              <h2 className={styles.rowTitle}>AI Workflow Automation</h2>
               <p className={styles.rowText}>
-                We build goal-directed agents that run autonomously to manage operational workflows. Equipped with custom toolsets, memory management, and feedback loops, these agents can execute complex business routines with safety rails.
+                We construct custom automated pipelines that handle repetitive B2B operations without human oversight. Solutions include automated outbound lead research, real-time CRM enrichment, automated data pipelines, and intelligent customer routing systems. We connect reasoning engines to your existing stack via webhooks, APIs, and robust workflow orchestration tools.
               </p>
               <div className={styles.specs}>
-                <span className={styles.specBadge}>Multi-Agent Frameworks</span>
-                <span className={styles.specBadge}>Self-Reflective Loops</span>
-                <span className={styles.specBadge}>Human-in-the-Loop Safeguards</span>
+                <span className={styles.specBadge}>Best Fit: Ops-Heavy Teams</span>
+                <span className={styles.specBadge}>Scaling SMBs</span>
+                <span className={styles.specBadge}>B2B SaaS Organizations</span>
               </div>
+              <p style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: '1.5rem', letterSpacing: '0.05em' }}>
+                DELIVERY: Shipped and deployed in 1–3 weeks, backed by ongoing maintenance retainers.
+              </p>
             </div>
             <MatteCubeDiagram />
           </div>
 
-          {/* Row 2: Workflow Automation */}
+          {/* Row 2: Custom AI Agent Development */}
           <div className={`${styles.serviceRow} ${styles.serviceRowReverse}`} id="workflows">
             <div className={styles.textSide}>
-              <span className="mono-label mono-label-muted">[ CLASSIFICATION: TRANSACTION WORKFLOWS ]</span>
-              <h2 className={styles.rowTitle}>Intelligent Workflows</h2>
+              <span className="mono-label mono-label-muted">[ SERVICE 02 : AGENT DEVELOPMENT ]</span>
+              <h2 className={styles.rowTitle}>Custom AI Agent Development Studio</h2>
               <p className={styles.rowText}>
-                Eliminate routine manual operations by introducing robust logic chains that bridge your database, CRM, file-storage, and communications tools. Built with error logs, retries, and transaction monitoring.
+                We engineer specialized, autonomous AI agents tailored to execute complex professional roles within your organization. Deliverables include autonomous sales outreach agents, tier-1 customer support bots, and internal knowledge assistants securely wired to your proprietary data. Built using custom-coded multi-agent orchestration and production RAG databases to ensure absolute factual accuracy and data privacy.
               </p>
               <div className={styles.specs}>
-                <span className={styles.specBadge}>State-Machine Logic</span>
-                <span className={styles.specBadge}>API Integrations</span>
-                <span className={styles.specBadge}>Real-time Event Triggers</span>
+                <span className={styles.specBadge}>Best Fit: Mid-Market Companies</span>
+                <span className={styles.specBadge}>Funded Startups</span>
+                <span className={styles.specBadge}>Enterprise Teams</span>
               </div>
+              <p style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: '1.5rem', letterSpacing: '0.05em' }}>
+                DELIVERY: Delivered in 4–8 weeks as a comprehensive, productized deployment.
+              </p>
             </div>
             <MatteSphereDiagram />
           </div>
 
-          {/* Row 3: RAG & LLM Integration */}
+          {/* Row 3: AI Transformation Consulting */}
           <div className={styles.serviceRow} id="rag">
             <div className={styles.textSide}>
-              <span className="mono-label mono-label-muted">[ CLASSIFICATION: RETRIEVAL INDEX ]</span>
-              <h2 className={styles.rowTitle}>Knowledge retrieval</h2>
+              <span className="mono-label mono-label-muted">[ SERVICE 03 : TRANSFORMATION CONSULTING ]</span>
+              <h2 className={styles.rowTitle}>AI Transformation &amp; Readiness Consulting</h2>
               <p className={styles.rowText}>
-                Equip your LLMs with direct, secure access to your internal documentation. We construct robust retrieval pipelines featuring semantic vector search, intelligent chunking methods, and hybrid filters to avoid hallucinations.
+                We act as your fractional AI leadership, conducting comprehensive audits of your current operational workflows and software stack. We identify high-ROI automation opportunities, map internal processes, and deliver an actionable technical roadmap. Our consulting frameworks provide executive clarity and rigorous ROI projections before any engineering work begins.
               </p>
               <div className={styles.specs}>
-                <span className={styles.specBadge}>Vector Database Setup</span>
-                <span className={styles.specBadge}>Metadata Filtering</span>
-                <span className={styles.specBadge}>Context Re-ranking</span>
+                <span className={styles.specBadge}>Best Fit: Traditional Businesses</span>
+                <span className={styles.specBadge}>Executive Leadership</span>
+                <span className={styles.specBadge}>CMOs</span>
               </div>
+              <p style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: '1.5rem', letterSpacing: '0.05em' }}>
+                DELIVERY: High-leverage 2–4 week intensive advisory engagements.
+              </p>
             </div>
             <MatteCylinderDiagram />
+          </div>
+
+          {/* Row 4: Productized Industry Solutions */}
+          <div className={`${styles.serviceRow} ${styles.serviceRowReverse}`} id="productized">
+            <div className={styles.textSide}>
+              <span className="mono-label mono-label-muted">[ SERVICE 04 : PRODUCTIZED SOLUTIONS ]</span>
+              <h2 className={styles.rowTitle}>Productized Industry Solutions</h2>
+              <p className={styles.rowText}>
+                Fixed-scope, fixed-price standardized AI deployments requiring zero lengthy scoping calls or custom architecture delays. Examples include automated weekly competitor intelligence reporting, standardized lead qualification engines, and automated customer intake desks. Maximum operational leverage delivered as a predictable, plug-and-play monthly service.
+              </p>
+              <div className={styles.specs}>
+                <span className={styles.specBadge}>Best Fit: Niche Businesses</span>
+                <span className={styles.specBadge}>Localized Enterprises</span>
+                <span className={styles.specBadge}>Fixed-Price Deployments</span>
+              </div>
+              <p style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', marginTop: '1.5rem', letterSpacing: '0.05em' }}>
+                DELIVERY: Predictable, plug-and-play monthly service.
+              </p>
+            </div>
+            <MattePrismDiagram />
           </div>
 
         </div>
@@ -146,12 +196,12 @@ export default function ServicesPage() {
         {/* Global Bottom CTA */}
         <div style={{ borderTop: '1px solid var(--border-grid)', padding: '6rem 0 2rem', marginTop: '6rem', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', alignItems: 'center' }}>
           <div>
-            <span className="mono-label" style={{ marginBottom: '1.5rem' }}>[ SCOPING BRIEFING ]</span>
-            <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', textTransform: 'uppercase', fontWeight: 800 }}>Ready to validate your system rules?</h3>
+            <span className="mono-label" style={{ marginBottom: '1.5rem' }}>[ DISCOVERY CALL : CLAIM YOUR DEMO ]</span>
+            <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', textTransform: 'uppercase', fontWeight: 800 }}>Ready to Build the System That Prints Time?</h3>
           </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Link href="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem' }}>
-              Request technical scoping
+              Book Your Discovery Call &amp; Claim Your Demo
             </Link>
           </div>
         </div>

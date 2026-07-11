@@ -16,21 +16,21 @@ export default function Home() {
             </div>
             
             <h1 className={styles.title} id="hero-title">
-              Bespoke AI<br />
-              Architectures for<br />
-              <span className={styles.titleAccent}>Enterprise.</span>
+              Build Autonomous AI<br />
+              Systems That Scale<br />
+              <span className={styles.titleAccent}>Your Operations.</span>
             </h1>
             
             <p className={styles.subtitle}>
-              Axon AI designs, validates, and deploys custom autonomous agents and secure transaction workflows. Built with deterministic logic models, zero wrapper abstractions, and full compliance guarantees.
+              We combine elite Software Development Engineering depth with advanced generative and agentic AI fluency to wire autonomous reasoning engines directly into your core business infrastructure. No chat wrappers. No manual prompting. Just custom-engineered workflows that operate 24/7 without human intervention.
             </p>
             
             <div className={styles.actions}>
               <Link href="/contact" className="btn btn-primary">
-                Request Roadmap
+                Request a 15-Minute Technical Demo
               </Link>
-              <Link href="/services" className="btn btn-ghost">
-                View Services
+              <Link href="/blueprint" className="btn btn-ghost">
+                Explore Our Architecture
               </Link>
             </div>
           </div>
@@ -39,33 +39,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Trust / Industry Strip ─── */}
-      <section className={styles.trust} aria-label="Clients and Trust">
+      {/* ─── Target Audience Strip ─── */}
+      <section className={styles.trust} aria-label="Target Audience">
         <div className="container">
+          <div className={styles.trustLabel}>Engineered for High-Velocity B2B Operations</div>
           <div className={styles.trustLogos}>
-            <span className={styles.logoItem}>FINTECH LOGIC</span>
-            <span className={styles.logoItem}>APEX LOGISTICS</span>
-            <span className={styles.logoItem}>KINETIC SECURITIES</span>
-            <span className={styles.logoItem}>SYSTEMIC GROUP</span>
-            <span className={styles.logoItem}>SECURE CORE</span>
+            <span className={styles.logoItem}>SCALING B2B SAAS TEAMS</span>
+            <span className={styles.logoItem}>OPS-HEAVY SMBS</span>
+            <span className={styles.logoItem}>LOGISTICS PROVIDERS</span>
+            <span className={styles.logoItem}>HIGH-GROWTH BRANDS</span>
+            <span className={styles.logoItem}>AUTOMATED REVENUE PIPELINES</span>
           </div>
         </div>
       </section>
 
-      {/* ─── Capabilities Section ─── */}
+      {/* ─── Value Proposition Cards ─── */}
       <section className={styles.capabilities} aria-labelledby="cap-title">
         <div className="container">
           <div className={styles.capHeader}>
             <div>
-              <span className="mono-label mono-label-muted">[ DISCIPLINE : CAPABILITIES ]</span>
+              <span className="mono-label mono-label-muted">[ WHY US : COMPETITIVE EDGE ]</span>
               <h2 className={styles.capTitle} id="cap-title">
-                Custom System<br />
-                <span className={styles.capTitleAccent}>Orchestration</span>
+                Why Businesses<br />
+                <span className={styles.capTitleAccent}>Choose Us</span>
               </h2>
             </div>
             <div>
               <p className={styles.capDesc}>
-                We build dedicated, non-shared models and state machinery. No templates. Every installation is engineered from zero to map exactly to your legacy infrastructure rules.
+                Purpose-built for scaling B2B SaaS teams, ops-heavy SMBs, logistics providers, and high-growth brands seeking immediate operational leverage and automated revenue pipelines.
               </p>
             </div>
           </div>
@@ -73,34 +74,34 @@ export default function Home() {
           <div className={styles.capGrid}>
             <article className={`${styles.capCard} card`}>
               <span className={styles.cardNum}>[ 01 ]</span>
-              <h3 className={styles.cardTitle}>Autonomous Agents</h3>
+              <h3 className={styles.cardTitle}>Engineering Depth Over No-Code Hacks</h3>
               <p className={styles.cardText}>
-                Secure agents equipped for automated decision cycles, compliance checks, and cross-application tool calls with built-in sandbox environments.
+                While traditional agencies quote months and rely on fragile no-code tools, our SDE background allows us to deploy production-grade vector databases, custom API wiring, and multi-agent teams in days.
               </p>
-              <Link href="/services#agents" className={styles.cardLink}>
-                Explore Agent Logic
+              <Link href="/services" className={styles.cardLink}>
+                View Our Services
               </Link>
             </article>
 
             <article className={`${styles.capCard} card`}>
               <span className={styles.cardNum}>[ 02 ]</span>
-              <h3 className={styles.cardTitle}>Transaction Workflows</h3>
+              <h3 className={styles.cardTitle}>Truly Autonomous Systems</h3>
               <p className={styles.cardText}>
-                State-machine workflows designed to process document flows, query databases, and connect APIs with robust failover mechanisms and live metric logs.
+                We move your team beyond manually typing prompts into chat interfaces. Our systems integrate natively into your CRMs, ERPs, and communication channels like WhatsApp to execute research, lead qualification, and data pipelines automatically.
               </p>
-              <Link href="/services#workflows" className={styles.cardLink}>
-                Explore Workflows
+              <Link href="/services" className={styles.cardLink}>
+                Explore Agent Systems
               </Link>
             </article>
 
             <article className={`${styles.capCard} card`}>
               <span className={styles.cardNum}>[ 03 ]</span>
-              <h3 className={styles.cardTitle}>Structured RAG</h3>
+              <h3 className={styles.cardTitle}>ROI-Driven 2-Week Pilots</h3>
               <p className={styles.cardText}>
-                Semantic searches that map contextual database files directly into instruction prompts, using vector-index structures to resolve queries accurately.
+                We eliminate implementation risk through structured, low-risk paid pilots. We build, deploy, and prove measurable operational hours saved in your live environment before scaling into comprehensive maintenance retainers.
               </p>
-              <Link href="/services#rag" className={styles.cardLink}>
-                Explore Indexing
+              <Link href="/blueprint" className={styles.cardLink}>
+                Explore Our Blueprint
               </Link>
             </article>
           </div>
@@ -112,15 +113,15 @@ export default function Home() {
         <div className="container">
           <div className={styles.ctaGrid}>
             <div className={styles.ctaTextSection}>
-              <span className="mono-label" style={{ marginBottom: '1.5rem' }}>[ SCOPING SESSION : ACCELERATE ]</span>
-              <h2 className={styles.ctaTitle} id="cta-heading">Begin Implementation</h2>
+              <span className="mono-label" style={{ marginBottom: '1.5rem' }}>[ DISCOVERY CALL : CLAIM YOUR DEMO ]</span>
+              <h2 className={styles.ctaTitle} id="cta-heading">Ready to Build the System That Prints Time?</h2>
               <p className={styles.ctaDesc}>
-                Schedule a briefing with our tech leads. We perform a stack evaluation and provide a custom deployment plan.
+                Stop manually prompting and start deploying autonomous operational infrastructure today.
               </p>
             </div>
             <div className={styles.ctaActionSection}>
               <Link href="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem' }}>
-                Request briefing
+                Book Your Discovery Call &amp; Claim Your Demo
               </Link>
             </div>
           </div>
