@@ -79,10 +79,10 @@ const MattePrismDiagram = () => (
     <svg className={styles.matteDiagram} width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <ellipse cx="160" cy="185" rx="65" ry="12" fill="#000000" fillOpacity="0.4" />
       {/* Diamond shape */}
-      <path d="M160 30 L220 105 L160 180 L100 105 Z" fill="url(#prismFill)" stroke="#E5E7EB" strokeWidth="1.2" />
-      <path d="M160 30 L220 105" stroke="var(--border-card)" strokeWidth="1.5" />
-      <path d="M160 30 L100 105" stroke="var(--border-card)" strokeWidth="1.5" />
-      <path d="M160 105 L160 30" stroke="rgba(229,231,235,0.2)" strokeWidth="1" strokeDasharray="3 3" />
+      <path className={styles.prismFace} d="M160 30 L220 105 L160 180 L100 105 Z" fill="url(#prismFill)" stroke="#E5E7EB" strokeWidth="1.2" />
+      <path className={styles.prismFace} d="M160 30 L220 105" stroke="var(--border-card)" strokeWidth="1.5" />
+      <path className={styles.prismFace} d="M160 30 L100 105" stroke="var(--border-card)" strokeWidth="1.5" />
+      <path className={styles.prismFace} d="M160 105 L160 30" stroke="rgba(229,231,235,0.2)" strokeWidth="1" strokeDasharray="3 3" />
       <defs>
         <linearGradient id="prismFill" x1="100" y1="30" x2="220" y2="180" gradientUnits="userSpaceOnUse">
           <stop stopColor="#252528" />

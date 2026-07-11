@@ -2,96 +2,110 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
-  const body = await request.json();
+  let body: Record<string, string>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 });
+  }
+
   const { name, email, details, budget } = body;
 
-  try {
-    if (!name || !email || !details) {
-      return NextResponse.json(
-        { error: 'Name, email, and details are required.' },
-        { status: 400 }
-      );
-    }
+  if (!name || !email || !details) {
+    return NextResponse.json(
+      { error: 'Name, email, and project details are required.' },
+      { status: 400 }
+    );
+  }
 
-    const mailOptions = {
-      from: `"Axon AI Intake" <${process.env.SMTP_USER || email}>`,
-      to: 'tejasabhuday@gmail.com',
-      replyTo: email,
-      subject: `New Scoping Intake Request from ${name}`,
-      text: `
-Intake details for Axon AI:
+  const smtpUser = process.env.SMTP_USER || '';
+  const smtpPass = process.env.SMTP_PASS || '';
+  const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const smtpPort = Number(process.env.SMTP_PORT) || 587;
+  const smtpSecure = process.env.SMTP_SECURE === 'true';
 
-Full Name: ${name}
-Work Email: ${email}
-Estimated Budget: ${budget || 'Not specified'}
-
-Project Requirements:
-------------------------------------------
-${details}
-------------------------------------------
-      `,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
-          <h2 style="color: #09090b; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">Axon AI Scoping Request</h2>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4b5563; width: 140px;">Full Name:</td>
-              <td style="padding: 8px 0; color: #09090b;">${name}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Work Email:</td>
-              <td style="padding: 8px 0; color: #09090b;"><a href="mailto:${email}">${email}</a></td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4b5563;">Estimated Budget:</td>
-              <td style="padding: 8px 0; color: #09090b;">${budget || 'Not specified'}</td>
-            </tr>
-          </table>
-          <h3 style="color: #4b5563; border-top: 1px solid #e5e7eb; padding-top: 15px; margin-top: 20px;">Project Requirements</h3>
-          <p style="color: #09090b; line-height: 1.6; white-space: pre-wrap; background: #f9fafb; padding: 15px; border-radius: 6px; border: 1px solid #f3f4f6;">${details}</p>
+  const htmlBody = `
+    <div style="font-family: 'Helvetica Neue', sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden;">
+      <div style="background: #09090b; padding: 28px 32px;">
+        <h2 style="color: #e5e7eb; margin: 0; font-size: 20px; letter-spacing: -0.5px;">Axon AI — New Scoping Request</h2>
+      </div>
+      <div style="padding: 32px;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 10px 0; font-weight: 700; color: #374151; width: 160px; font-size: 13px;">Full Name</td>
+            <td style="padding: 10px 0; color: #09090b; font-size: 14px;">${name}</td>
+          </tr>
+          <tr style="border-top: 1px solid #f3f4f6;">
+            <td style="padding: 10px 0; font-weight: 700; color: #374151; font-size: 13px;">Work Email</td>
+            <td style="padding: 10px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #6366f1;">${email}</a></td>
+          </tr>
+          <tr style="border-top: 1px solid #f3f4f6;">
+            <td style="padding: 10px 0; font-weight: 700; color: #374151; font-size: 13px;">Estimated Budget</td>
+            <td style="padding: 10px 0; color: #09090b; font-size: 14px;">${budget || 'Not specified'}</td>
+          </tr>
+        </table>
+        <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+          <p style="font-weight: 700; color: #374151; font-size: 13px; margin: 0 0 10px;">Project Requirements</p>
+          <p style="color: #1f2937; line-height: 1.7; background: #f9fafb; padding: 16px; border-radius: 6px; border: 1px solid #f3f4f6; margin: 0; font-size: 14px; white-space: pre-wrap;">${details}</p>
         </div>
-      `,
-    };
+      </div>
+      <div style="background: #f9fafb; padding: 16px 32px; border-top: 1px solid #e5e7eb;">
+        <p style="color: #6b7280; font-size: 12px; margin: 0;">Sent via Axon AI contact form · Delhi, India</p>
+      </div>
+    </div>
+  `;
 
-    // If credentials are empty, log to console and return success
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS || process.env.SMTP_USER.includes('your-email')) {
-      console.log('--- FALLBACK INTAKE LOGGED TO CONSOLE (SMTP credentials missing/default) ---');
-      console.log(mailOptions.text);
-      console.log('--------------------------------------------------------------------------');
-      return NextResponse.json({
-        success: true,
-        message: 'Intake logged in console fallback (SMTP details unconfigured).',
-      });
-    }
+  const textBody = `Axon AI — New Scoping Request\n\nName: ${name}\nEmail: ${email}\nBudget: ${budget || 'Not specified'}\n\nProject Requirements:\n${details}`;
 
-    // Try to send real email
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+  // ── If SMTP credentials are not configured yet, log and return success ──
+  const credsMissing =
+    !smtpUser ||
+    !smtpPass ||
+    smtpUser === 'your-email@gmail.com' ||
+    smtpPass.startsWith('xxxx');
 
-    await transporter.sendMail(mailOptions);
-    return NextResponse.json({ success: true, message: 'Intake logged and email sent successfully.' });
-
-  } catch (error: any) {
-    // If mail sending fails, print details to console so lead is not lost, and return 200 state fallback
-    console.error('--- SMTP AUTHENTICATION OR SEND FAILED ---');
-    console.error('Error Details:', error.message || error);
-    console.log('\n--- LEAD DETAILS SAVED TO CONSOLE ---');
-    console.log(`Name: ${name}`);
-    console.log(`Email: ${email}`);
-    console.log(`Budget: ${budget || 'Not specified'}`);
-    console.log(`Details:\n${details}`);
-    console.log('------------------------------------\n');
-
+  if (credsMissing) {
+    console.log('\n══════ AXON AI INTAKE (SMTP not configured) ══════');
+    console.log(textBody);
+    console.log('══════════════════════════════════════════════════\n');
     return NextResponse.json({
       success: true,
-      message: `Intake form captured locally. (Email sending failed: ${error.message || 'SMTP Authentication failure'})`,
+      message: 'Intake captured. (Configure SMTP_USER and SMTP_PASS in .env.local to enable email delivery.)',
     });
+  }
+
+  // ── Send via configured SMTP ────────────────────────────────────────────
+  try {
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
+      auth: { user: smtpUser, pass: smtpPass },
+      tls: { rejectUnauthorized: false },
+    });
+
+    await transporter.sendMail({
+      from: `"Axon AI" <${smtpUser}>`,
+      to: 'tejasabhuday@gmail.com',
+      replyTo: email,
+      subject: `[Axon AI] New Scoping Request from ${name}`,
+      text: textBody,
+      html: htmlBody,
+    });
+
+    return NextResponse.json({ success: true, message: 'Email sent successfully.' });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    // Save lead to console so it's never lost even if mail fails
+    console.error('\n══════ SMTP SEND FAILED ══════');
+    console.error('Reason:', message);
+    console.log('\n── Lead saved to console ──');
+    console.log(textBody);
+    console.log('══════════════════════════════\n');
+
+    return NextResponse.json(
+      { error: `Email delivery failed: ${message}. Your enquiry was saved on the server.` },
+      { status: 500 }
+    );
   }
 }

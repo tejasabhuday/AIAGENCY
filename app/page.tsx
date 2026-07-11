@@ -16,23 +16,16 @@ export default function Home() {
             </div>
             
             <h1 className={styles.title} id="hero-title">
-              Build Autonomous AI<br />
-              Systems That Scale<br />
-              <span className={styles.titleAccent}>Your Operations.</span>
+              Autonomous AI<br />
+              Systems. Shipped<br />
+              <span className={styles.titleAccent}>in Days.</span>
             </h1>
             
             <p className={styles.subtitle}>
               We combine elite Software Development Engineering depth with advanced generative and agentic AI fluency to wire autonomous reasoning engines directly into your core business infrastructure. No chat wrappers. No manual prompting. Just custom-engineered workflows that operate 24/7 without human intervention.
             </p>
             
-            <div className={styles.actions}>
-              <Link href="/contact" className="btn btn-primary">
-                Request a 15-Minute Technical Demo
-              </Link>
-              <Link href="/blueprint" className="btn btn-ghost">
-                Explore Our Architecture
-              </Link>
-            </div>
+
           </div>
           
           <HeroVisual />

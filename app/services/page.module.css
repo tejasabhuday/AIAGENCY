@@ -11,12 +11,13 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: -0.04em;
   margin-top: var(--space-md);
+  line-height: 1.1;
 }
 
 .description {
@@ -27,6 +28,7 @@
   margin-top: var(--space-md);
 }
 
+/* Service rows grid */
 .grid {
   display: flex;
   flex-direction: column;
@@ -42,8 +44,17 @@
   padding-top: var(--space-2xl);
 }
 
+/* Reversed rows: put visual first on desktop (grid order trick) */
 .serviceRowReverse {
   grid-template-columns: 1fr 1fr;
+}
+
+.serviceRowReverse .textSide {
+  order: 2;
+}
+
+.serviceRowReverse .visualSide {
+  order: 1;
 }
 
 .textSide {
@@ -55,11 +66,12 @@
 
 .rowTitle {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
   font-weight: 800;
   color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .rowText {
@@ -92,10 +104,10 @@
   align-items: center;
 }
 
-/* Matte-finish geometric diagrams in services instead of glowing flows */
+/* Matte-finish geometric diagrams */
 .matteDiagram {
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
   height: auto;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
 }
@@ -134,9 +146,65 @@
   transform: translateY(5px);
 }
 
-@media (max-width: 768px) {
+/* Exploded Prism / Diamond Assembly */
+.prismFace {
+  transition: transform 0.6s var(--ease-smooth), opacity 0.4s;
+}
+.serviceRow:hover .prismFace {
+  transform: scale(1.08) translateY(-12px);
+  opacity: 0.9;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 1024px) {
   .serviceRow, .serviceRowReverse {
+    gap: var(--space-2xl);
+  }
+  .matteDiagram {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+  .intro {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+  }
+  .grid {
+    gap: var(--space-2xl);
+  }
+  .serviceRow,
+  .serviceRowReverse {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
+  }
+  /* On mobile always show text first, visual second */
+  .serviceRowReverse .textSide {
+    order: 1;
+  }
+  .serviceRowReverse .visualSide {
+    order: 2;
+  }
+  .visualSide {
+    display: none; /* hide diagrams on mobile to keep it clean */
+  }
+  .rowTitle {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+  .specs {
+    gap: 0.35rem;
+  }
+  .specBadge {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.6rem;
   }
 }

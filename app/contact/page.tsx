@@ -68,7 +68,7 @@ export default function ContactPage() {
             
             <div className={styles.infoBlock}>
               <span className={styles.infoLabel}>OFFICE</span>
-              <span className={styles.infoText}>San Francisco, CA</span>
+              <span className={styles.infoText}>Delhi, India</span>
             </div>
 
             <div className={styles.commitments}>
@@ -118,18 +118,15 @@ export default function ContactPage() {
 
                   <div className={styles.formGroup}>
                     <label className={styles.label} htmlFor="budget">Estimated Budget</label>
-                    <select
+                    <input
                       id="budget"
+                      type="text"
                       name="budget"
-                      className={styles.select}
+                      placeholder="e.g. $5,000 – $20,000 or open to discuss"
+                      className={styles.input}
                       value={form.budget}
                       onChange={handleChange}
-                    >
-                      <option value="">Select a range</option>
-                      <option value="15k-30k">$15,000 – $30,000</option>
-                      <option value="30k-75k">$30,000 – $75,000</option>
-                      <option value="75k+">$75,000+</option>
-                    </select>
+                    />
                   </div>
 
                   <div className={styles.formGroup}>
